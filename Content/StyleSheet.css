@@ -1,0 +1,44 @@
+﻿/* Styles pour le conteneur du formulaire */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Styles pour les en-têtes */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styles pour les champs de saisie */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+/* Styles pour le bouton de connexion */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    background-color: #4caf50;
+    color: #fff;
+}
+
+    .btn:hover {
+        background-color: #45a049;
+    }
