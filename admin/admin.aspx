@@ -7,132 +7,50 @@
     <title>Gestion des tâches - Admin</title>
     <!-- Inclusion du fichier CSS de Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-        <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
+        <style>body{background-color:#f8f9fa;font-family:Arial,sans-serif}.sidebar{background-color:black;color:#fff;position:fixed;height:100%;overflow-y:auto;z-index:1;padding-top:20px;width:250px;border-radius:10px}.container-main{margin-left:250px;padding:20px}.modal-body .form-group{margin-bottom:15px}.modal-header{background-color:#007bff;color:#fff;border-bottom:none}.modal-title{color:#fff}.modal-footer{border-top:none}.modal-header .close{color:#fff}.box{background-color:#007bff;color:#ffffff;padding:20px;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,0.1);margin-bottom:20px}.card{margin-bottom:20px}.card img{width:100px;height:100px;border-radius:50%;margin-bottom:10px}.btn-danger{margin-bottom:0px}table{width:100%;border-collapse:collapse;border:2px solid #ddd}th{background-color:#f2f2f2;border:1px solid #ddd;padding:8px;text-align:left}td{border:1px solid #ddd;padding:8px}tr:nth-child(odd){background-color:#f9f9f9}.nav-link{border-radius:5px;transition:background-color 0.3s}.nav-link:hover{background-color:#ffc107}.nav-icon{width:20px;height:auto;margin-right:10px}</style>
 
-        .sidebar {
-    background-color: #343a40;
-    color: #ffffff;
-    position: fixed;
-    height: 100%;
-    overflow-y: auto;
-    z-index: 1;
-    padding-top: 20px;
-    width: 250px;
-}
-
-.container-main {
-    margin-left: 250px; /* La même largeur que le sidebar */
-    padding: 20px;
-}
-.modal-body .form-group {
-    margin-bottom: 15px;
-}.modal-header {
-    background-color: #007bff;
-    color: #fff;
-    border-bottom: none;
-}.modal-title {
-    color: #fff;
-}.modal-footer {
-    border-top: none;
-}.modal-header .close {
-    color: #fff;
-}
-
-.box {
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-.card {
-    margin-bottom: 20px;
-}
-
-.card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.btn-danger {
-    margin-bottom: 0px;
-}
-    /* Style pour la table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 2px solid #ddd; /* Bordure de la table */
-}
-
-/* Style pour les cellules d'en-tête */
-th {
-    background-color: #f2f2f2; /* Couleur de fond */
-    border: 1px solid #ddd; /* Bordure */
-    padding: 8px; /* Espacement interne */
-    text-align: left; /* Alignement du texte */
-}
-
-/* Style pour les cellules de données */
-td {
-    border: 1px solid #ddd; /* Bordure */
-    padding: 8px; /* Espacement interne */
-}
-
-/* Style pour les lignes impaires */
-tr:nth-child(odd) {
-    background-color: #f9f9f9; /* Couleur de fond */
-}
-    </style>
 </head>
 <body>
 
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div class="col-md-3 sidebar">
+                                   <div class="col-md-3 sidebar">
     <nav class="navbar navbar-dark">
         <ul class="navbar-nav flex-column">
             <li class="nav-item">
                 <a class="nav-link active" href="admin.aspx">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    <img src="/img/home.png" alt="Home Icon" class="nav-icon"/> <!-- Image pour Home -->
                     Home
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="utilisateur.aspx">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    <img src="/img/utilisateuricon.png" alt="User Icon" class="nav-icon"/> <!-- Image pour Utilisateur -->
                     UTILISATEUR
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="tache.aspx">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                    <img src="/img/tacheicon.png" alt="Tasks Icon" class="nav-icon"/> <!-- Image pour Taches -->
                     TACHES
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="affectation_tache.aspx">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    <img src="/img/afficon.png" alt="Assignment Icon" class="nav-icon"/> <!-- Image pour Affectation Tache -->
                     AFFECTATION TACHE
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="rapport.aspx">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                    <img src="/img/rapporticon.png" alt="Report Icon" class="nav-icon"/> <!-- Image pour Rapport -->
                     RAPPORT
                 </a>
             </li>
             <li class="nav-item" style="margin-top:300px">
                 <a class="nav-link" href="/Default.aspx">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#power"></use></svg>
+                    <img src="/img/out.png" alt="Logout Icon" class="nav-icon"/> <!-- Image pour Déconnexion -->
                     Déconnexion
                 </a>
             </li>
@@ -142,7 +60,6 @@ tr:nth-child(odd) {
 
             <!-- Contenu principal -->
             <div class="col-md-9 container-main">
-                <h1>Gestion des tâches - Admin</h1>
                  <form id="form1" runat="server">
                 <div class="container">
                      
@@ -265,7 +182,6 @@ tr:nth-child(odd) {
     <script type="text/javascript">
         $(document).ready(function () {
             $('#GridView1 tbody').on('dblclick', 'tr', function () {
-
                 var id = $(this).find('td:eq(0)').text();
                 var title = $(this).find('td:eq(1)').text();
                 var desc = $(this).find('td:eq(2)').text();
@@ -273,8 +189,8 @@ tr:nth-child(odd) {
                 var statuse = $(this).find('td:eq(4)').text();
                 var dated = $(this).find('td:eq(5)').text();
                 var datef = $(this).find('td:eq(6)').text();
-                var formattedDated = moment(dated).format("DD/MM/YYYY");
-                var formattedDatef = moment(datef).format("DD/MM/YYYY");
+                var formattedDated = moment(dated, "DD/MM/YYYY").format("DD/MM/YYYY");
+                var formattedDatef = moment(datef, "DD/MM/YYYY").format("DD/MM/YYYY");
                 $('#modal-id').find('#id').val(id);
                 $('#modal-id').find('#title').val(title);
                 $('#modal-id').find('#desc').val(desc);

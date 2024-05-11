@@ -9,20 +9,8 @@
     <title>Gestion des tâches - Admin</title>
     <!-- Inclusion du fichier CSS de Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-    <style>body{background-color:#f8f9fa;font-family:Arial,sans-serif;}/* Modal */
-.modal-body .form-group {
-    margin-bottom: 15px;
-}.modal-header {
-    background-color: #007bff;
-    color: #fff;
-    border-bottom: none;
-}.modal-title {
-    color: #fff;
-}.modal-footer {
-    border-top: none;
-}.modal-header .close {
-    color: #fff;
-}.sidebar{background-color:#343a40;color:#fff;position:fixed;height:100%;overflow-y:auto;z-index:1;padding-top:20px;width:250px;}.container-main{margin-left:250px;padding:20px;}.box{background-color:#007bff;color:#fff;padding:20px;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,.1);margin-bottom:20px;}.card{margin-bottom:20px;}.card img{width:100px;height:100px;border-radius:50%;margin-bottom:10px;}table{width:100%;border-collapse:collapse;border:2px solid #ddd;}th{background-color:#f2f2f2;border:1px solid #ddd;padding:8px;text-align:left;}td{border:1px solid #ddd;padding:8px;}tr:nth-child(odd){background-color:#f9f9f9;}.btn-danger{margin-bottom:0;}.table{width:100%;border-collapse:collapse;border:2px solid #ddd;}.th{background-color:#f2f2f2;border:1px solid #ddd;padding:8px;text-align:left;}.td{border:1px solid #ddd;padding:8px;}.tr:nth-child(odd){background-color:#f9f9f9}</style>
+    <style>body{background-color:#f8f9fa;font-family:Arial,sans-serif}table{width:100%;border-collapse:collapse;border:2px solid #ddd}th{background-color:#f2f2f2;border:1px solid #ddd;padding:8px;text-align:left}td{border:1px solid #ddd;padding:8px}tr:nth-child(odd){background-color:#f9f9f9}.sidebar{background-color:black;color:#fff;position:fixed;height:100%;overflow-y:auto;z-index:1;padding-top:20px;width:250px;border-radius:10px}.container-main{margin-left:250px;padding:20px}.form-group label{font-weight:bold;margin-bottom:5px}.form-group input[type="text"],.form-group input[type="email"],.form-group input[type="password"]{width:100%;padding:10px;border:1px solid #ccc;border-radius:5px;box-sizing:border-box;margin-bottom:15px}.form-group input[readonly]{background-color:#f0f0f0}.btn{background-color:#007bff;color:#fff;border:none;padding:10px 20px;border-radius:5px;cursor:pointer}.btn:hover{background-color:#0056b3}.modal-body .form-group{margin-bottom:15px}.modal-header{background-color:#007bff;color:#fff;border-bottom:none}.modal-title{color:#fff}.modal-footer{border-top:none}.col-md-3.sidebar{overflow-y:auto}.modal-header .close{color:#fff}.nav-item{display:flex;align-items:center}.nav-icon{width:20px;height:auto;margin-right:10px}.nav-link{border-radius:5px;transition:background-color 0.3s}.nav-link:hover{background-color:#ffc107}</style>
+
 
 </head>
 <body>
@@ -30,49 +18,49 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div class="col-md-3 sidebar">
-                <nav class="navbar navbar-dark">
-                    <ul class="navbar-nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="admin.aspx">
-                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                                Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="utilisateur.aspx">
-                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                                UTILISATEUR
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="tache.aspx">
-                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                                TACHES
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="affectation_tache.aspx">
-                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                                AFFECTATION TACHE
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="rapport.aspx">
-                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                                RAPPORT
-                            </a>
-                        </li>                        <li class="nav-item" style="margin-top:300px">
-    <a class="nav-link" href="/Default.aspx">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#power"></use></svg>
-        Déconnexion
-    </a>
-</li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-md-9 container-main">
-                <h1>tâches - Admin</h1>
+                       <div class="col-md-3 sidebar">
+    <nav class="navbar navbar-dark">
+        <ul class="navbar-nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="admin.aspx">
+                    <img src="/img/home.png" alt="Home Icon" class="nav-icon"/> <!-- Image pour Home -->
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="utilisateur.aspx">
+                    <img src="/img/utilisateuricon.png" alt="User Icon" class="nav-icon"/> <!-- Image pour Utilisateur -->
+                    UTILISATEUR
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tache.aspx">
+                    <img src="/img/tacheicon.png" alt="Tasks Icon" class="nav-icon"/> <!-- Image pour Taches -->
+                    TACHES
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="affectation_tache.aspx">
+                    <img src="/img/afficon.png" alt="Assignment Icon" class="nav-icon"/> <!-- Image pour Affectation Tache -->
+                    AFFECTATION TACHE
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="rapport.aspx">
+                    <img src="/img/rapporticon.png" alt="Report Icon" class="nav-icon"/> <!-- Image pour Rapport -->
+                    RAPPORT
+                </a>
+            </li>
+            <li class="nav-item" style="margin-top:300px">
+                <a class="nav-link" href="/Default.aspx">
+                    <img src="/img/out.png" alt="Logout Icon" class="nav-icon"/> <!-- Image pour Déconnexion -->
+                    Déconnexion
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+            <div class="col-md-9 container-main" style="zoom:90%">
                 <div class="container">
                         <form id="form1" runat="server">
     <div class="container">
@@ -198,16 +186,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#GridView1 tbody').on('dblclick', 'tr', function () {
-                
-                var id = $(this).find('td:eq(1)').text(); 
+                var id = $(this).find('td:eq(1)').text();
                 var title = $(this).find('td:eq(2)').text();
                 var desc = $(this).find('td:eq(3)').text();
                 var priority = $(this).find('td:eq(4)').text();
                 var statuse = $(this).find('td:eq(5)').text();
-                var dated = $(this).find('td:eq(6)').text(); 
-                var datef = $(this).find('td:eq(7)').text(); 
-                var formattedDated = moment(dated).format("DD/MM/YYYY");
-                var formattedDatef = moment(datef).format("DD/MM/YYYY");
+                var dated = $(this).find('td:eq(6)').text();
+                var datef = $(this).find('td:eq(7)').text();
+                var formattedDated = moment(dated, "DD/MM/YYYY").format("DD/MM/YYYY");
+                var formattedDatef = moment(datef, "DD/MM/YYYY").format("DD/MM/YYYY");
                 $('#modal-id').find('#id').val(id);
                 $('#modal-id').find('#title').val(title);
                 $('#modal-id').find('#desc').val(desc);
@@ -219,6 +206,7 @@
             });
         });
     </script>
+
 
 
 </body>
