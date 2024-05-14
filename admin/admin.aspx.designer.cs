@@ -51,13 +51,85 @@ namespace gestiontaches
         protected global::System.Web.UI.WebControls.Label lblNombreTachesAffectees;
 
         /// <summary>
-        /// Contrôle rptUsers.
+        /// Contrôle lblNombreTachesComplet.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptUsers;
+        protected global::System.Web.UI.WebControls.Label lblNombreTachesComplet;
+
+        /// <summary>
+        /// Contrôle lblPourcentageUtilisateur.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPourcentageUtilisateur;
+
+        /// <summary>
+        /// Contrôle progressBarUtilisateur.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel progressBarUtilisateur;
+
+        /// <summary>
+        /// Contrôle lblPourcentageTaches.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPourcentageTaches;
+
+        /// <summary>
+        /// Contrôle progressBarTaches.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel progressBarTaches;
+
+        /// <summary>
+        /// Contrôle lblPourcentageTachesComplet.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPourcentageTachesComplet;
+
+        /// <summary>
+        /// Contrôle progressBarTachesComplet.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel progressBarTachesComplet;
+
+        /// <summary>
+        /// Contrôle lblPourcentageTachesEnCours.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPourcentageTachesEnCours;
+
+        /// <summary>
+        /// Contrôle progressBarTachesEnCours.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel progressBarTachesEnCours;
 
         /// <summary>
         /// Contrôle GridView1.

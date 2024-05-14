@@ -19,31 +19,31 @@
     <nav class="navbar navbar-dark">
         <ul class="navbar-nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="admin.aspx">
+                <a class="nav-link active" href='<%= "admin.aspx?NomUtilisateur=" + Server.UrlEncode(Session["NomUtilisateur"].ToString()) %>'>
                     <img src="/img/home.png" alt="Home Icon" class="nav-icon"/> <!-- Image pour Home -->
                     Home
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="utilisateur.aspx">
+                <a class="nav-link" href='<%= "utilisateur.aspx?NomUtilisateur=" + Server.UrlEncode(Session["NomUtilisateur"].ToString()) %>'>
                     <img src="/img/utilisateuricon.png" alt="User Icon" class="nav-icon"/> <!-- Image pour Utilisateur -->
                     UTILISATEUR
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tache.aspx">
+                <a class="nav-link" href='<%= "tache.aspx?NomUtilisateur=" + Server.UrlEncode(Session["NomUtilisateur"].ToString()) %>'>
                     <img src="/img/tacheicon.png" alt="Tasks Icon" class="nav-icon"/> <!-- Image pour Taches -->
                     TACHES
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="affectation_tache.aspx">
+                <a class="nav-link" href='<%= "affectation_tache.aspx?NomUtilisateur=" + Server.UrlEncode(Session["NomUtilisateur"].ToString()) %>'>
                     <img src="/img/afficon.png" alt="Assignment Icon" class="nav-icon"/> <!-- Image pour Affectation Tache -->
                     AFFECTATION TACHE
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="rapport.aspx">
+                <a class="nav-link" href='<%= "rapport.aspx?NomUtilisateur=" + Server.UrlEncode(Session["NomUtilisateur"].ToString()) %>'>
                     <img src="/img/rapporticon.png" alt="Report Icon" class="nav-icon"/> <!-- Image pour Rapport -->
                     RAPPORT
                 </a>
@@ -61,62 +61,144 @@
             <!-- Contenu principal -->
             <div class="col-md-9 container-main">
                  <form id="form1" runat="server">
-                <div class="container">
-                     
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="box">
-                                <h3>Nombre d'utilisateurs</h3>
-                                <!-- Afficher le nombre d'utilisateurs -->
-                                <p>Nombre total : <asp:Label ID="lblNombreUtilisateurs" runat="server"></asp:Label></p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box">
-                                <h3>Nombre de tâches</h3>
-                                <!-- Afficher le nombre de tâches -->
-                                <p>Nombre total : <asp:Label ID="lblNombreTaches" runat="server"></asp:Label></p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box">
-                                <h3>Nombre de tâches affectées</h3>
-                                <!-- Afficher le nombre de tâches affectées -->
-                                <p>Nombre total : <asp:Label ID="lblNombreTachesAffectees" runat="server"></asp:Label></p>
-                            </div>
+                <div class="row">
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-primary text-white shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-uppercase mb-1">Utilisateurs</div>
+                        <div class="h5 mb-0 font-weight-bold">
+                            <asp:Label ID="lblNombreUtilisateurs" runat="server" Text="Label"></asp:Label>
                         </div>
                     </div>
-                </div>
-                <!-- Cartes des utilisateurs -->
-                <div class="container">
-                    <div class="row">
-                        <asp:Repeater ID="rptUsers" runat="server">
-    <ItemTemplate>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top" src='data:image;base64,<%# Convert.ToBase64String(Eval("Photo") as byte[]) %>' alt="User Photo" />
-                <div class="card-body">
-                    <h5 class="card-title"><%# Eval("Nom") %> <%# Eval("Prenom") %></h5>
-                    <p class="card-text"><strong>Email :</strong> <%# Eval("Email") %></p>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x"></i>
+                    </div>
                 </div>
             </div>
         </div>
-    </ItemTemplate>
-</asp:Repeater>
+    </div>
 
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-success text-white shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-uppercase mb-1">Tâches</div>
+                        <div class="h5 mb-0 font-weight-bold">
+                            <asp:Label ID="lblNombreTaches" runat="server" Text="Label"></asp:Label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-tasks fa-2x"></i>
                     </div>
                 </div>
-                <asp:GridView ID="GridView1" CssClass="custom-table" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" Width="1083px">
-                    <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
-                    <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
-                    <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
-                    <RowStyle BackColor="White" ForeColor="#003399" />
-                    <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-                    <SortedAscendingCellStyle BackColor="#EDF6F6" />
-                    <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
-                    <SortedDescendingCellStyle BackColor="#D6DFDF" />
-                    <SortedDescendingHeaderStyle BackColor="#002876" />
-                </asp:GridView>                                                     <div class="modal fade" id="modal-id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-uppercase mb-1">Affectation Tâches</div>
+                        <div class="h5 mb-0 font-weight-bold">
+                            <asp:Label ID="lblNombreTachesAffectees" runat="server" Text="Label"></asp:Label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-check fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-warning text-white shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-uppercase mb-1">Tâches Complétées</div>
+                        <div class="h5 mb-0 font-weight-bold">
+                            <asp:Label ID="lblNombreTachesComplet" runat="server" Text="Label"></asp:Label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-check-circle fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                
+                    <div class="container">
+                         <div class="row">
+        <!-- Tableau des pourcentages à gauche -->
+        <div class="col-md-8">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                </div>
+                <div class="card-body">
+                    <h4 class="small font-weight-bold">Utilisateur <span class="float-right"><asp:Label ID="lblPourcentageUtilisateur" runat="server" Text=""></asp:Label></span></h4>
+                    <div class="progress mb-4">
+                        <asp:Panel ID="progressBarUtilisateur" CssClass="progress-bar bg-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" runat="server"></asp:Panel>
+                    </div>
+                    <h4 class="small font-weight-bold">Taches <span class="float-right"><asp:Label ID="lblPourcentageTaches" runat="server" Text=""></asp:Label></span></h4>
+                    <div class="progress mb-4">
+                        <asp:Panel ID="progressBarTaches" CssClass="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" runat="server"></asp:Panel>
+                    </div>
+                    <h4 class="small font-weight-bold">Taches Complet <span class="float-right"><asp:Label ID="lblPourcentageTachesComplet" runat="server" Text=""></asp:Label></span></h4>
+                    <div class="progress mb-4">
+                        <asp:Panel ID="progressBarTachesComplet" CssClass="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" runat="server"></asp:Panel>
+                    </div>
+                    <h4 class="small font-weight-bold">Taches En Cours <span class="float-right"><asp:Label ID="lblPourcentageTachesEnCours" runat="server" Text=""></asp:Label></span></h4>
+                    <div class="progress mb-4">
+                        <asp:Panel ID="progressBarTachesEnCours" CssClass="progress-bar bg-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" runat="server"></asp:Panel>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Description de l'application et image à droite -->
+        <div class="col-md-4">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="/img/undraw_posting_photo.svg" alt="Illustration of a person managing tasks">
+            </div>
+            <p>La gestion des tâches est un processus visant à organiser, suivre et contrôler l'exécution des différentes activités d'un projet ou d'une entreprise. Elle implique la planification, l'attribution de ressources, le suivi de l'avancement et la coordination des tâches pour atteindre les objectifs fixés dans les délais impartis.</p>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+
+                    </div>
+            <div style="margin-left:340px">
+                    <asp:GridView  ID="GridView1" CssClass="custom-table" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None"  BorderWidth="1px" CellPadding="4" Width="1083px">
+                        <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
+                        <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
+                        <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
+                        <RowStyle BackColor="White" ForeColor="#003399" />
+                        <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+                        <SortedAscendingCellStyle BackColor="#EDF6F6" />
+                        <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
+                        <SortedDescendingCellStyle BackColor="#D6DFDF" />
+                        <SortedDescendingHeaderStyle BackColor="#002876" />
+                    </asp:GridView></div>
+                      <div class="modal fade" id="modal-id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -171,6 +253,7 @@
         </div>
         
     </div>
+    
 
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>

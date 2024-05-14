@@ -13,6 +13,8 @@ namespace gestiontaches
 {
     public partial class admin : System.Web.UI.Page
     {
+        private  int maxuser=50;
+        private int maxtache = 100;
         basedonner b = new basedonner();
         protected List<UserModel> Users { get; set; }
 
@@ -22,25 +24,144 @@ namespace gestiontaches
             {
                 Response.Redirect("~/Default.aspx");
             }
-
+            LoadTaskComplet();
             LoadTaskData();
             LoadAssignedTaskData();
             LoadUserData();
+
             Users = GetUsersFromDatabase();
             // Mettre à jour l'affichage des données
-            BindUserData();
             if (!IsPostBack)
             {
                 BindGridView();
+                chart();
             }
         }
+        
+        private int GetNombreUtilisateursFromDatabase()
+        {
+            int nombreUtilisateurs = 0;
+            string connectionString = "Data Source=TORNADO;Initial Catalog=master;Integrated Security=True";
+            string query = "SELECT COUNT(*) FROM Utilisateur";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    nombreUtilisateurs = (int)command.ExecuteScalar();
+                }
+            }
+
+            return nombreUtilisateurs;
+        }
+
+        // Méthode pour récupérer le nombre de tâches depuis la base de données
+        private int GetNombreTachesFromDatabase()
+        {
+            int nombreTaches = 0;
+            string connectionString = "Data Source=TORNADO;Initial Catalog=master;Integrated Security=True";
+            string query = "SELECT COUNT(*) FROM Taskee";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    nombreTaches = (int)command.ExecuteScalar();
+                }
+            }
+
+            return nombreTaches;
+        }
+
+        // Méthode pour récupérer le nombre de tâches terminées depuis la base de données
+        private int GetNombreTachesTerminesFromDatabase()
+        {
+            int nombreTachesTermines = 0;
+            string connectionString = "Data Source=TORNADO;Initial Catalog=master;Integrated Security=True";
+            string query = "SELECT COUNT(*) FROM Taskee WHERE Status LIKE 'T%'";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    nombreTachesTermines = (int)command.ExecuteScalar();
+                }
+            }
+
+            return nombreTachesTermines;
+        }
+
+        // Méthode pour récupérer le nombre de tâches en cours depuis la base de données
+        private int GetNombreTachesEnCoursFromDatabase()
+        {
+            int nombreTachesEnCours = 0;
+            string connectionString = "Data Source=TORNADO;Initial Catalog=master;Integrated Security=True";
+            string query = "SELECT COUNT(*) FROM Taskee WHERE Status = 'En cours'";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    nombreTachesEnCours = (int)command.ExecuteScalar();
+                }
+            }
+
+            return nombreTachesEnCours;
+        }
+        private void chart()
+        {
+            // Récupération des données depuis la base de données
+            int nombreUtilisateurs = GetNombreUtilisateursFromDatabase();
+            int nombreTaches = GetNombreTachesFromDatabase();
+            int nombreTachesTermines = GetNombreTachesTerminesFromDatabase();
+            int nombreTachesEnCours = GetNombreTachesEnCoursFromDatabase();
+
+            // Calcul des pourcentages et mise à jour des contrôles d'interface utilisateur
+            double pourcentageUtilisateurs = (double)nombreUtilisateurs / maxuser * 100;
+            double pourcentageTaches = (double)nombreTaches / maxtache * 100;
+            double pourcentageTachesComplet = (double)nombreTachesTermines / nombreTaches * 100;
+            double pourcentageTachesEnCours = (double)nombreTachesEnCours / nombreTaches * 100;
+
+            lblPourcentageUtilisateur.Text = pourcentageUtilisateurs.ToString("0") + "%";
+            lblPourcentageTaches.Text = pourcentageTaches.ToString("0") + "%";
+            lblPourcentageTachesComplet.Text = pourcentageTachesComplet.ToString("0") + "%";
+            lblPourcentageTachesEnCours.Text = pourcentageTachesEnCours.ToString("0") + "%";
+
+            progressBarUtilisateur.Style["width"] = pourcentageUtilisateurs.ToString("0") + "%";
+            progressBarTaches.Style["width"] = pourcentageTaches.ToString("0") + "%";
+            progressBarTachesComplet.Style["width"] = pourcentageTachesComplet.ToString("0") + "%";
+            progressBarTachesEnCours.Style["width"] = pourcentageTachesEnCours.ToString("0") + "%";
+        }
+        protected string GetCircleColor(object dataItem)
+        {
+            // Récupérer la catégorie de l'élément de données
+            string category = DataBinder.Eval(dataItem, "Category").ToString();
+
+            // Déterminer la couleur en fonction de la catégorie
+            switch (category)
+            {
+                case "Utilisateurs":
+                    return "#007bff"; // Bleu
+                case "Tâches":
+                    return "#28a745"; // Vert
+                case "Tâches affectées":
+                    return "#ffc107"; // Jaune
+                default:
+                    return "#000000"; // Noir par défaut
+            }
+        }
+
         private void BindGridView()
         {
             // Chaîne de connexion à votre base de données à partir du fichier Web.config
             string strConn = "Data Source=TORNADO;Initial Catalog=master;Integrated Security=True";
 
             // Requête SQL pour sélectionner les utilisateurs sans inclure la colonne de mot de passe
-            string query = "SELECT * FROM Taskee";
+            string query = "SELECT * FROM Taskee ORDER BY CASE Priority WHEN 'Haute' THEN 1 WHEN 'Normale' THEN 2 ELSE 3 END";
 
             // Utilisation de SqlConnection pour se connecter à la base de données
             using (SqlConnection connection = new SqlConnection(strConn))
@@ -109,11 +230,7 @@ namespace gestiontaches
             return users;
         }
 
-        protected void BindUserData()
-        {
-            rptUsers.DataSource = Users;
-            rptUsers.DataBind();
-        }
+       
 
         // Modèle pour représenter un utilisateur
         public class UserModel
@@ -134,7 +251,7 @@ namespace gestiontaches
             int nombreUtilisateurs = (int)command.ExecuteScalar();
             lblNombreUtilisateurs.Text = nombreUtilisateurs.ToString();
         }
-
+       
         private void LoadTaskData()
         {
             // Requête SQL pour compter le nombre d'utilisateurs
@@ -143,6 +260,15 @@ namespace gestiontaches
 
             int nombreUtilisateurs = (int)command.ExecuteScalar();
             lblNombreTaches.Text = nombreUtilisateurs.ToString();
+        }
+        private void LoadTaskComplet()
+        {
+            // Requête SQL pour compter le nombre d'utilisateurs
+            string query = "SELECT COUNT(*) FROM Taskee WHERE Status LIKE 'T%'";
+            SqlCommand command = b.nombase(query);
+
+            int nombreUtilisateurs = (int)command.ExecuteScalar();
+            lblNombreTachesComplet.Text = nombreUtilisateurs.ToString();
         }
 
         private void LoadAssignedTaskData()
@@ -191,6 +317,14 @@ namespace gestiontaches
         {
 
         }
+        
+
+        public class CircleModel
+        {
+            public string Category { get; set; }
+            public double Percentage { get; set; }
+        }
+
 
 
     }

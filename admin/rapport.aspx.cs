@@ -158,38 +158,41 @@ namespace gestiontaches
         {
             Response.Clear();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachement;filename=Utilisateur.doc");
-            Response.ContentType = "application/vnd.ms-word";
+            Response.AddHeader("content-disposition", "attachment;filename=Utilisateur.doc");
+            Response.ContentType = "application/vnd.ms-word; charset=utf-8"; // Ajout de l'encodage UTF-8
+
             using (StringWriter stringWriter = new StringWriter())
             {
-                HtmlTextWriter hw = new HtmlTextWriter(stringWriter);
-                GridView4.AllowPaging = false;
-                this.BindGridView();
-                GridView4.CssClass = "custom-table"; // Ajoutez une classe CSS à votre GridView
-
-                GridView4.HeaderRow.BackColor = Color.White;
-                foreach (GridViewRow row in GridView1.Rows)
+                using (HtmlTextWriter hw = new HtmlTextWriter(stringWriter))
                 {
+                    GridView4.AllowPaging = false;
+                    this.BindGridView();
+                    GridView4.CssClass = "custom-table"; // Ajoutez une classe CSS à votre GridView
 
-                    row.BackColor = Color.White;
-                    foreach (TableCell cell in row.Cells)
+                    GridView4.HeaderRow.BackColor = Color.White;
+                    foreach (GridViewRow row in GridView1.Rows)
                     {
-                        if (row.RowIndex % 2 == 0)
+                        row.BackColor = Color.White;
+                        foreach (TableCell cell in row.Cells)
                         {
-                            cell.BackColor = GridView1.AlternatingRowStyle.BackColor;
-                        }
-                        else
-                        {
-                            cell.BackColor = GridView1.RowStyle.BackColor;
+                            if (row.RowIndex % 2 == 0)
+                            {
+                                cell.BackColor = GridView1.AlternatingRowStyle.BackColor;
+                            }
+                            else
+                            {
+                                cell.BackColor = GridView1.RowStyle.BackColor;
+                            }
                         }
                     }
+                    GridView4.RenderControl(hw);
+                    Response.Output.Write(stringWriter.ToString());
                 }
-                GridView4.RenderControl(hw);
-                Response.Output.Write(stringWriter.ToString());
-                Response.Flush();
-                Response.End();
             }
+            Response.Flush();
+            Response.End();
         }
+
         protected void Button3_Click(object sender, EventArgs e)
         {
             Response.Clear();

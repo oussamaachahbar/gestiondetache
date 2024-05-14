@@ -49,43 +49,232 @@
     </nav>
 </div>
 
+                       <!-- Contenu principal -->
             <div class="col-md-9 container-main">
-                <h1>Utilisateur - Admin</h1>
-                <div class="container">
-                           <form id="form1" runat="server" class="container">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="box">
-                <h3>Nombre d'utilisateurs</h3>
-                <p>Nombre total : <asp:Label ID="lblNombreUtilisateurs" runat="server"></asp:Label></p>
+                 <form id="form1" runat="server">
+                <div class="row">
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-primary text-white shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-uppercase mb-1">Utilisateurs</div>
+                        <div class="h5 mb-0 font-weight-bold">
+                            <asp:Label ID="lblNombreUtilisateurs" runat="server" Text="Label"></asp:Label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x"></i>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="box">
-                <h3>Nombre de tâches</h3>
-                <p>Nombre total : <asp:Label ID="lblNombreTaches" runat="server"></asp:Label></p>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-success text-white shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-uppercase mb-1">Tâches</div>
+                        <div class="h5 mb-0 font-weight-bold">
+                            <asp:Label ID="lblNombreTaches" runat="server" Text="Label"></asp:Label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-tasks fa-2x"></i>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="box">
-                <h3>Nombre de tâches affectées</h3>
-                <p>Nombre total : <asp:Label ID="lblNombreTachesAffectees" runat="server"></asp:Label></p>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-uppercase mb-1">Affectation Tâches</div>
+                        <div class="h5 mb-0 font-weight-bold">
+                            <asp:Label ID="lblNombreTachesAffectees" runat="server" Text="Label"></asp:Label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-check fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card bg-warning text-white shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-uppercase mb-1">Tâches Complétées</div>
+                        <div class="h5 mb-0 font-weight-bold">
+                            <asp:Label ID="lblNombreTachesComplet" runat="server" Text="Label"></asp:Label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-check-circle fa-2x"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-        
-        </form>
+
+                
+                    <div class="container">
+                         <div class="row">
+        <!-- Tableau des pourcentages à gauche -->
+        <div class="col-md-8">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                </div>
+                <div class="card-body">
+                    <h4 class="small font-weight-bold">Utilisateur <span class="float-right"><asp:Label ID="lblPourcentageUtilisateur" runat="server" Text=""></asp:Label></span></h4>
+                    <div class="progress mb-4">
+                        <asp:Panel ID="progressBarUtilisateur" CssClass="progress-bar bg-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" runat="server"></asp:Panel>
+                    </div>
+                    <h4 class="small font-weight-bold">Taches <span class="float-right"><asp:Label ID="lblPourcentageTaches" runat="server" Text=""></asp:Label></span></h4>
+                    <div class="progress mb-4">
+                        <asp:Panel ID="progressBarTaches" CssClass="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" runat="server"></asp:Panel>
+                    </div>
+                    <h4 class="small font-weight-bold">Taches Complet <span class="float-right"><asp:Label ID="lblPourcentageTachesComplet" runat="server" Text=""></asp:Label></span></h4>
+                    <div class="progress mb-4">
+                        <asp:Panel ID="progressBarTachesComplet" CssClass="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" runat="server"></asp:Panel>
+                    </div>
+                    <h4 class="small font-weight-bold">Taches En Cours <span class="float-right"><asp:Label ID="lblPourcentageTachesEnCours" runat="server" Text=""></asp:Label></span></h4>
+                    <div class="progress mb-4">
+                        <asp:Panel ID="progressBarTachesEnCours" CssClass="progress-bar bg-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" runat="server"></asp:Panel>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Description de l'application et image à droite -->
+        <div class="col-md-4">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="/img/undraw_posting_photo.svg" alt="Illustration of a person managing tasks">
+            </div>
+            <p>La gestion des tâches est un processus visant à organiser, suivre et contrôler l'exécution des différentes activités d'un projet ou d'une entreprise. Elle implique la planification, l'attribution de ressources, le suivi de l'avancement et la coordination des tâches pour atteindre les objectifs fixés dans les délais impartis.</p>
         </div>
     </div>
+</div>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-            <!-- JavaScript de Bootstrap -->
+    </div>
+</div>
+
+
+
+                    </div>
+            <div style="margin-left:340px">
+                    <asp:GridView  ID="GridView1" CssClass="custom-table" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None"  BorderWidth="1px" CellPadding="4" Width="1083px">
+                        <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
+                        <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
+                        <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
+                        <RowStyle BackColor="White" ForeColor="#003399" />
+                        <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+                        <SortedAscendingCellStyle BackColor="#EDF6F6" />
+                        <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
+                        <SortedDescendingCellStyle BackColor="#D6DFDF" />
+                        <SortedDescendingHeaderStyle BackColor="#002876" />
+                    </asp:GridView></div>
+                                          <div class="modal fade" id="modal-id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Informations de l'utilisateur</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    
+                                        <div class="form-group">
+    <label for="id">ID</label>
+    <input type="text" class="form-control" id="id" readonly>
+</div>
+<div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" readonly>
+</div>
+<div class="form-group">
+    <label for="desc">Description</label>
+    <input type="text" class="form-control" id="desc" readonly>
+</div>
+<div class="form-group">
+    <label for="priority">Priority</label>
+    <input type="text" class="form-control" id="priority" readonly>
+</div>
+
+<div class="form-group">
+    <label for="status">Status</label>
+    <input type="text" class="form-control" id="status" readonly>
+</div>
+   
+<div class="form-group">
+    <label for="dated">DateDebut</label>
+    <input type="text" class="form-control" id="dated" readonly>
+</div>
+                                    <div class="form-group">
+    <label for="datef">DateFin</label>
+    <input type="text" class="form-control" id="datef" readonly>
+</div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-xxxx" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-xxxx" crossorigin="anonymous"></script>
-
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#GridView1 tbody').on('dblclick', 'tr', function () {
+                var id = $(this).find('td:eq(0)').text();
+                var title = $(this).find('td:eq(1)').text();
+                var desc = $(this).find('td:eq(2)').text();
+                var priority = $(this).find('td:eq(3)').text();
+                var statuse = $(this).find('td:eq(4)').text();
+                var dated = $(this).find('td:eq(5)').text();
+                var datef = $(this).find('td:eq(6)').text();
+                var formattedDated = moment(dated, "DD/MM/YYYY").format("DD/MM/YYYY");
+                var formattedDatef = moment(datef, "DD/MM/YYYY").format("DD/MM/YYYY");
+                $('#modal-id').find('#id').val(id);
+                $('#modal-id').find('#title').val(title);
+                $('#modal-id').find('#desc').val(desc);
+                $('#modal-id').find('#priority').val(priority);
+                $('#modal-id').find('#status').val(statuse);
+                $('#modal-id').find('#dated').val(formattedDated);
+                $('#modal-id').find('#datef').val(formattedDatef);
+                $('#modal-id').modal('show');
+            });
+        });
+    </script>
 </body>
 </html>
